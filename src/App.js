@@ -14,7 +14,6 @@ function App() {
 
   useEffect(() => {
     ShopService.getCategories().then((res) => {
-      //console.log(res.data);
       setShopDetails(res.data);
     });
   }, []);

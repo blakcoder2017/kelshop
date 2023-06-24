@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Header = (props) => {
   let shopDetails = props.shopDetails;
-
+  console.log("shop", typeof shopDetails);
   const convertToProper = (str) => {
     str = str.toString();
 
@@ -35,7 +35,7 @@ const Header = (props) => {
           </Link>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {shopDetails.map((menu) => (
-              <li className="nav-item" key={menu.id}>
+              <li className="nav-item" key={menu}>
                 <Link
                   to={`/products/${menu}`}
                   state={menu}
