@@ -40,5 +40,8 @@ I would then structure the services folder like:
 
 Created a new `pages` folder and moved all `pages` to the pages folder
 
+Created `utils` folder and added `routes` as a list, this would easily help make application routing more dynamic and customizable in one place.
+
+<p> I also added `craco` to configure import path aliasing </p>
 
 > NOTE: Deleted and removed all unused files and imports

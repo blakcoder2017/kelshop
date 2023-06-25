@@ -2,12 +2,9 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
-import Header from "./components/UI/Header/Header";
-import Home from "./pages/Home/Home";
-import Cart from "./pages/Cart/Cart";
-import Product from "./pages/Product/Product";
-import Products from "./pages/Products/Products";
-import ShopService from "./services/ShopService";
+import Header from "@components/UI/Header/Header";
+import ShopService from "@services/ShopService";
+import {routes} from "@utils/routes";
 
 function App() {
   const [shopDetails, setShopDetails] = useState([]);
@@ -23,10 +20,15 @@ function App() {
       <Router>
         <Header shopDetails={shopDetails} />
         <Routes>
-          <Route path="/" exact Component={Home}></Route>
-          <Route path="/cart/:id" Component={Cart}></Route>
-          <Route path="/product/:id" Component={Product}></Route>
-          <Route path="/products/:cat" Component={Products}></Route>
+          {
+            routes.map((route)=>(
+                <Route path={route.path} Component={route.component}></Route>
+            ))
+          }
+
+          {/*<Route path="/cart/:id" Component={Cart}></Route>*/}
+          {/*<Route path="/product/:id" Component={Product}></Route>*/}
+          {/*<Route path="/products/:cat" Component={Products}></Route>*/}
         </Routes>
       </Router>
     </div>

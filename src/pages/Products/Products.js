@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import ShopService from "../../services/ShopService";
+import ShopService from "@services/ShopService";
 
-import ProductList from "../../components/ProductList/ProductList";
+import ProductList from "@components/ProductList/ProductList";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
