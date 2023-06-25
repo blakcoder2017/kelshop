@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaCartPlus } from "react-icons/fa";
 
-import ShopService from "../../ApiServices/ShopService";
+import ShopService from "../../services/ShopService";
 
 const CartCount = () => {
   const [cartCount, setCartCount] = useState(0);

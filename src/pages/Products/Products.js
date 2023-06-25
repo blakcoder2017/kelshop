@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import ShopService from "../../ApiServices/ShopService";
+import ShopService from "../../services/ShopService";
 
-import ProductList from "../ProductList/ProductList";
+import ProductList from "../../components/ProductList/ProductList";
 
 const Products = () => {
   const [products, setProducts] = useState([]);

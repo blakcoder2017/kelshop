@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
-import Header from "./Components/UI/Header/Header";
-import Home from "./Components/Home/Home";
-import Cart from "./Components/Cart/Cart";
-import Product from "./Components/Product/Product";
-import Products from "./Components/Products/Products";
-import ShopService from "./ApiServices/ShopService";
+import Header from "./components/UI/Header/Header";
+import Home from "./pages/Home/Home";
+import Cart from "./pages/Cart/Cart";
+import Product from "./pages/Product/Product";
+import Products from "./pages/Products/Products";
+import ShopService from "./services/ShopService";
 
 function App() {
   const [shopDetails, setShopDetails] = useState([]);
