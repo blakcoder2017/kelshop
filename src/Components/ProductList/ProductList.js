@@ -3,7 +3,7 @@ import "./ProductList.css";
 
 const ProductList = (props) => {
   let products = props.products;
-  console.log("product", products);
+
   return (
     <>
       <section className="section-background ">

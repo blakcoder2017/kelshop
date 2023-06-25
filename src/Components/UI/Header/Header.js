@@ -1,11 +1,10 @@
 import React from "react";
 import CartCount from "../../CartCount/CartCount";
 import ShopLogo from "../../../logo.png";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
   let shopDetails = props.shopDetails;
-  console.log("shop", typeof shopDetails);
   const convertToProper = (str) => {
     str = str.toString();
 

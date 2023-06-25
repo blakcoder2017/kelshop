@@ -24,7 +24,7 @@ function App() {
         <Header shopDetails={shopDetails} />
         <Routes>
           <Route path="/" exact Component={Home}></Route>
-          <Route path="/cart/:id" Component={Cart}></Route>
+          <Route path="/cart" Component={Cart}></Route>
           <Route path="/product/:id" Component={Product}></Route>
           <Route path="/products/:cat" Component={Products}></Route>
         </Routes>

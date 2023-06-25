@@ -10,6 +10,9 @@ class ShopService {
   getCartItems() {
     return axios.get(baseUrl + "/carts");
   }
+  getcartSingleItem() {
+    return axios.get(baseUrl + "/carts/1");
+  }
 
   getCategories() {
     return axios.get(baseUrl + "/products/categories");
@@ -17,6 +20,10 @@ class ShopService {
 
   getOneCategory(cat) {
     return axios.get(baseUrl + "/products/category/" + cat);
+  }
+
+  getSingleProduct(prodId) {
+    return axios.get(baseUrl + "/products/" + prodId);
   }
 }
 
