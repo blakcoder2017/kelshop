@@ -1,9 +1,7 @@
 import React from "react";
 import "./ProductList.css";
 
-const ProductList = (props) => {
-  let products = props.products;
-  console.log("product", products);
+const ProductList = ({loading, products}) => {
   return (
     <>
       <section className="section-background ">
@@ -12,29 +10,35 @@ const ProductList = (props) => {
             <strong>Product listing</strong>
           </h4>
 
-          <div className="row">
-            {products.map((product) => (
-              <div className="col-lg-4 col-md-12 mb-4" key={product.id}>
-                <div className="bg-image hover-zoom ripple shadow-1-strong rounded">
-                  <img src={product.image} className="w-100" height="350px" alt={''} />
-                  <a href="#">
-                    <div className="mask mask-color">
-                      <div className="d-flex justify-content-start align-items-start h-100">
-                        <h5>
+          {
+            loading ? (
+                <div>Loading...</div>
+            ) : (
+                <div className="row">
+                  {products.map((product) => (
+                      <div className="col-lg-4 col-md-12 mb-4" key={product.id}>
+                        <div className="bg-image hover-zoom ripple shadow-1-strong rounded">
+                          <img src={product.image} className="w-100" height="350px" alt={''} />
+                          <a href="#">
+                            <div className="mask mask-color">
+                              <div className="d-flex justify-content-start align-items-start h-100">
+                                <h5>
                           <span className="badge bg-success pt-2 ms-3 mt-3 text-light">
                             GHS {product?.price}
                           </span>
-                        </h5>
+                                </h5>
+                              </div>
+                            </div>
+                            <div className="hover-overlay">
+                              <div className="mask mask-color"></div>
+                            </div>
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                    <div className="hover-overlay">
-                      <div className="mask mask-color"></div>
-                    </div>
-                  </a>
+                  ))}
                 </div>
-              </div>
-            ))}
-          </div>
+                )
+          }
         </div>
       </section>
     </>

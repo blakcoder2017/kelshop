@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from "react";
-import ShopService from "@services/ShopService";
+import React from "react";
 import ProductList from "@components/ProductList/ProductList";
 import Banner from "@components/UI/Banner/Banner";
 import "./Home.css";
+import useProducts from "../../hooks/useProducts";
 
 const Home = () => {
-  const [allProducts, setAllProducts] = useState([]);
+  const [loading, products] = useProducts('/products');
 
   const banners = ['/assets/images/banner1.jpg','/assets/images/banner2.jpg','/assets/images/banner3.jpg'];
-
-  useEffect(() => {
-    ShopService.getAllProducts().then((res) => {
-      setAllProducts(res.data);
-    });
-  }, []);
 
   return (
     <>
       <Banner bans={banners} />
-      <ProductList products={allProducts} />
+      <ProductList loading={loading} products={products} />
     </>
   );
 };

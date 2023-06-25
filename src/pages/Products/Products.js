@@ -1,22 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
-import ShopService from "@services/ShopService";
 
 import ProductList from "@components/ProductList/ProductList";
+import useProducts from "@hooks/useProducts";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
   const location = useLocation();
-
-  const params = location.state;
-
-  ShopService.getOneCategory(params).then((res) => {
-    setProducts(res.data);
-  });
+  const [loading, products] = useProducts(`/products/category/${location.state}`);
 
   return (
     <div>
-      <ProductList products={products} />
+      <ProductList loading={loading} products={products} />
     </div>
   );
 };

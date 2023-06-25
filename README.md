@@ -42,6 +42,8 @@ Created a new `pages` folder and moved all `pages` to the pages folder
 
 Created `utils` folder and added `routes` as a list, this would easily help make application routing more dynamic and customizable in one place.
 
-<p> I also added `craco` to configure import path aliasing </p>
+### Craco
+I also added `craco` to configure import path aliasing. This makes file imports look a lot more cleaner and consistent accross many files
+> NOTE: The react app is no longer executed with `react-scripts` but `craco`
 
 > NOTE: Deleted and removed all unused files and imports

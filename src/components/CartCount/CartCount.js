@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { FaCartPlus } from "react-icons/fa";
-
-import ShopService from "../../services/ShopService";
+import useProducts from "@hooks/useProducts";
 
 const CartCount = () => {
+  const [loading, carts] = useProducts(`/carts`);
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
-    ShopService.getCartItems().then((res) => {
-      let count = 0;
-      res.data.forEach((item) => {
-        count += item.products.length;
-      });
-
-      setCartCount(count);
-    });
-  }, []);
+    if(!loading && carts.length > 0){
+      const cartItems = carts.map(cart => cart.products.length).reduce((acc = 0, curr) => (acc + curr));
+      setCartCount(cartItems);
+    }
+  }, [carts, loading]);
 
   return (
     <div>
