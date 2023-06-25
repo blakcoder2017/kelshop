@@ -15,9 +15,6 @@ const Home = () => {
     });
   }, []);
 
-  const viewProduct = () => {
-    console.log("single product clicked");
-  };
   return (
     <>
       <Banner bans={banners} />

@@ -19,5 +19,5 @@ class ShopService {
     return axios.get(baseUrl + "/products/category/" + cat);
   }
 }
-
-export default new ShopService();
+const shopService = new ShopService();
+export default shopService;

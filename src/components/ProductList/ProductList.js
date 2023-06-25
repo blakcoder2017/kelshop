@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ProductList.css";
 
 const ProductList = (props) => {
@@ -16,13 +16,13 @@ const ProductList = (props) => {
             {products.map((product) => (
               <div className="col-lg-4 col-md-12 mb-4" key={product.id}>
                 <div className="bg-image hover-zoom ripple shadow-1-strong rounded">
-                  <img src={product.image} className="w-100" height="350px" />
-                  <a href="#!">
+                  <img src={product.image} className="w-100" height="350px" alt={''} />
+                  <a href="#">
                     <div className="mask mask-color">
                       <div className="d-flex justify-content-start align-items-start h-100">
                         <h5>
                           <span className="badge bg-success pt-2 ms-3 mt-3 text-light">
-                            GHS {product.price}
+                            GHS {product?.price}
                           </span>
                         </h5>
                       </div>

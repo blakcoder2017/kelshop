@@ -1,6 +1,6 @@
 import React from "react";
 import CartCount from "../../CartCount/CartCount";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
   let shopDetails = props.shopDetails;
