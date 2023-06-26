@@ -4,10 +4,13 @@ import CartItem from "../CartItem/CartItem";
 import ShopService from "../../ApiServices/ShopService";
 
 const Cart = () => {
-  const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
   const [cartItemsNumber, setCartItemsNumber] = useState(0);
   const [cartProducts, setCartProducts] = useState([]);
+
+  const [allProducts, setAllProducts] = useState([]);
+  let prods = [];
+
   let totalCart = 0;
   const incrementHandler = () => {
     console.log("qty change");
@@ -16,21 +19,27 @@ const Cart = () => {
   useEffect(() => {
     let newTotal = [];
     ShopService.getcartSingleItem().then((res) => {
-      setCart(res.data);
       setCartItemsNumber(res.data.products.length);
       setCartProducts(res.data.products);
     });
 
-    cartProducts.forEach((prod) => {
-      ShopService.getSingleProduct(prod.productId).then((res) => {
-        newTotal.push(res.data.price * prod.quantity);
-      });
+    ShopService.getAllProducts().then((res) => {
+      setAllProducts(res.data);
     });
 
-    newTotal.forEach((total) => {
-      totalCart = +total;
-      console.log(totalCart);
-    });
+    for (let i = 0; i < cartProducts.length; i++) {
+      for (const prod of allProducts) {
+        if (cartProducts[i].productId === prod.id) {
+          prod.qty = cartProducts[i].quantity;
+          totalCart += cartProducts[i].quantity * prod.price;
+          //   console.log(totalCart);
+          prods.push(prod);
+        }
+      }
+    }
+
+    setCartTotal(totalCart);
+    //s console.log(prods, cartTotal);
   }, []);
 
   return (
@@ -62,8 +71,6 @@ const Cart = () => {
                           onIncrement={incrementHandler}
                         />
 
-                        <hr className="my-4" />
-
                         <div className="pt-5">
                           <h6 className="mb-0">
                             <a href="#!" className="text-body">
@@ -83,10 +90,8 @@ const Cart = () => {
                           <h6 className="text-uppercase">
                             Items {cartItemsNumber}
                           </h6>
-                          <h6>GHS {totalCart}</h6>
+                          <h6>GHS {cartTotal}</h6>
                         </div>
-
-                        <hr className="my-4" />
 
                         <div className="d-flex justify-content-between mb-5">
                           <h6 className="text-uppercase">Total price</h6>
