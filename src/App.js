@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import Header from "@components/UI/Header/Header";
-import {routes} from "@utils/routes";
+import Footer from "@components/UI/Footer/Footer";
+import { routes } from "@utils/routes";
 import useProducts from "@hooks/useProducts";
 
 function App() {
@@ -14,12 +15,15 @@ function App() {
       <Router>
         <Header shopDetails={categories} />
         <Routes>
-          {
-            routes.map((route, index)=>(
-                <Route key={index} path={route.path} Component={route.component}></Route>
-            ))
-          }
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              Component={route.component}
+            ></Route>
+          ))}
         </Routes>
+        <Footer />
       </Router>
     </div>
   );

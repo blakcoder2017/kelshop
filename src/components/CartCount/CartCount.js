@@ -7,8 +7,10 @@ const CartCount = () => {
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
-    if(!loading && carts.length > 0){
-      const cartItems = carts.map(cart => cart.products.length).reduce((acc = 0, curr) => (acc + curr));
+    if (!loading && carts.length > 0) {
+      const cartItems = carts
+        .map((cart) => cart.products.length)
+        .reduce((acc = 0, curr) => acc + curr);
       setCartCount(cartItems);
     }
   }, [carts, loading]);

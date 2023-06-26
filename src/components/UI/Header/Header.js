@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 
 const Header = (props) => {
   let shopDetails = props.shopDetails;
-  console.log("shop", typeof shopDetails);
+
   const convertToProper = (str) => {
     str = str.toString();
-
     return str.replace(/\w\S*/g, function (txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
@@ -30,7 +29,12 @@ const Header = (props) => {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <Link to="/" className="navbar-brand mt-2 mt-lg-0" href="#">
-            <img src={'/assets/images/logo.png'} width="200" alt="Logo" loading="lazy" />
+            <img
+              src={"/assets/images/logo.png"}
+              width="200"
+              alt="Logo"
+              loading="lazy"
+            />
           </Link>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {shopDetails.map((menu) => (
