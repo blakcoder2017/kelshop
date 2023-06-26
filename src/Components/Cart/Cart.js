@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CartItem from "../CartItem/CartItem";
-
+import "./Cart.css";
 import ShopService from "../../ApiServices/ShopService";
 
 const Cart = () => {
@@ -57,9 +57,9 @@ const Cart = () => {
                     <div className="col-lg-8">
                       <div className="p-5">
                         <div className="d-flex justify-content-between align-items-center mb-5">
-                          <h1 className="fw-bold mb-0 text-black">
+                          <h3 className="fw-bold mb-0 text-black">
                             Shopping Cart
-                          </h1>
+                          </h3>
                           <h6 className="mb-0 text-muted">
                             {cartItemsNumber} items
                           </h6>
@@ -81,21 +81,21 @@ const Cart = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="col-lg-4 bg-grey">
+                    <div className="col-lg-4 bg-grey summary">
                       <div className="p-5">
-                        <h3 className="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                        <h4 className="fw-bold mb-5 mt-2 pt-1">Summary</h4>
                         <hr className="my-4" />
 
                         <div className="d-flex justify-content-between mb-4">
                           <h6 className="text-uppercase">
                             Items {cartItemsNumber}
                           </h6>
-                          <h6>GHS {cartTotal}</h6>
+                          <h6> {cartTotal}</h6>
                         </div>
 
                         <div className="d-flex justify-content-between mb-5">
                           <h6 className="text-uppercase">Total price</h6>
-                          <h6>GHS {cartTotal}</h6>
+                          <h6>{cartTotal}</h6>
                         </div>
 
                         <button

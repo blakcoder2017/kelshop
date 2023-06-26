@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ShopService from "../../ApiServices/ShopService";
-import { type } from "@testing-library/user-event/dist/type";
+import "./CartItem.css";
 const CartItem = (props) => {
   const [productsDetails, setProductsDetails] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
@@ -45,10 +45,6 @@ const CartItem = (props) => {
             <h6 className="text-black mb-0">{p.category}</h6>
           </div>
           <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
-            <button className="btn btn-link px-2">
-              <i className="fas fa-minus"></i>
-            </button>
-
             <input
               id="form1"
               min="0"
@@ -58,10 +54,6 @@ const CartItem = (props) => {
               onChange={incrementHandler}
               className="form-control form-control-sm"
             />
-
-            <button className="btn btn-link px-2">
-              <i className="fas fa-plus"></i>
-            </button>
           </div>
 
           <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
