@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Code Review
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This code review is purposely to help make the code structure and quality much better for extensibility.
 
-## Available Scripts
+## File Structure Review
 
-In the project directory, you can run:
+In React, the `"public"` folder serves as the root directory for your application and contains static assets that are directly accessible to the users. When you place files in the public folder, they are served as-is without any processing or bundling by the build tools like webpack or Babel. Here are some reasons why it is often better to put files in the public folder in React:
 
-### `npm start`
+1. Accessibility: Files placed in the public folder can be accessed directly by their URLs. This makes them easily accessible to both the client-side and server-side code, as well as external services or APIs that might need to interact with those files.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. Performance: Static assets in the public folder are typically served with cache headers and can be cached by the user's browser or CDN (Content Delivery Network). This improves the performance of your application, as the browser can retrieve the assets from the cache instead of making additional network requests.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. Build Optimizations: When you place files in the public folder, they are not processed by build tools during the compilation process. This can reduce the build time and complexity, as there is no need to handle transformations or optimizations for these files.
 
-### `npm test`
+4. External Assets: If you have external assets that are not bundled with your application, such as images, fonts, or videos, placing them in the public folder allows you to reference them directly using their URLs without the need for additional configuration or imports.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> For this reason, I moved all static assets to the public folder under a newly created folder `assets`
 
-### `npm run build`
+### Folder Renaming 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`ApiServices --> services`: I prefer having `services` as a super name and only nest other folders when necessary. Folder naming could be met with lots of contention but this is my personal opinion. 
+I think it much cleaner this way. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<p>In your case: <code>services > ShopService.js</code> is a better structure for me. 
+But assume you had other services like a zoom service that wraps around a package 
+to handle image zooming on hover.</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p>
+I would then structure the services folder like: 
+<pre>
+├── services
+│   ├── apis
+│   │   ├── ShopService.js
+│   ├── core
+|   |   ├── ZoomService.js
+</pre>
+</p>
 
-### `npm run eject`
+> NOTE: I renamed all folders and made them lowercase, this is basically my personal preference and doesn't have any added benefits
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Created a new `pages` folder and moved all `pages` to the pages folder
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Created `utils` folder and added `routes` as a list, this would easily help make application routing more dynamic and customizable in one place.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Craco
+I also added `craco` to configure import path aliasing. This makes file imports look a lot more cleaner and consistent accross many files
+> NOTE: The react app is no longer executed with `react-scripts` but `craco`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> NOTE: Deleted and removed all unused files and imports

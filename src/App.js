@@ -1,32 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
-import Header from "./Components/UI/Header/Header";
-import Home from "./Components/Home/Home";
-import Cart from "./Components/Cart/Cart";
-import Product from "./Components/Product/Product";
-import Products from "./Components/Products/Products";
-import ShopService from "./ApiServices/ShopService";
+import Header from "@components/UI/Header/Header";
+import {routes} from "@utils/routes";
+import useProducts from "@hooks/useProducts";
 
 function App() {
-  const [shopDetails, setShopDetails] = useState([]);
-
-  useEffect(() => {
-    ShopService.getCategories().then((res) => {
-      setShopDetails(res.data);
-    });
-  }, []);
+  const [_, categories] = useProducts(`/products/categories`);
 
   return (
     <div className="container-md">
       <Router>
-        <Header shopDetails={shopDetails} />
+        <Header shopDetails={categories} />
         <Routes>
-          <Route path="/" exact Component={Home}></Route>
-          <Route path="/cart" Component={Cart}></Route>
-          <Route path="/product/:id" Component={Product}></Route>
-          <Route path="/products/:cat" Component={Products}></Route>
+          {
+            routes.map((route, index)=>(
+                <Route key={index} path={route.path} Component={route.component}></Route>
+            ))
+          }
         </Routes>
       </Router>
     </div>

@@ -1,10 +1,10 @@
 import React from "react";
 import CartCount from "../../CartCount/CartCount";
-import ShopLogo from "../../../logo.png";
 import { Link } from "react-router-dom";
 
 const Header = (props) => {
   let shopDetails = props.shopDetails;
+  console.log("shop", typeof shopDetails);
   const convertToProper = (str) => {
     str = str.toString();
 
@@ -30,7 +30,7 @@ const Header = (props) => {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <Link to="/" className="navbar-brand mt-2 mt-lg-0" href="#">
-            <img src={ShopLogo} width="200" alt="Logo" loading="lazy" />
+            <img src={'/assets/images/logo.png'} width="200" alt="Logo" loading="lazy" />
           </Link>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {shopDetails.map((menu) => (
