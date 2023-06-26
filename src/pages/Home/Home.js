@@ -2,7 +2,7 @@ import React from "react";
 import ProductList from "@components/ProductList/ProductList";
 import Banner from "@components/UI/Banner/Banner";
 import "./Home.css";
-import useProducts from "../../hooks/useProducts";
+import useProducts from "@hooks/useProducts";
 
 const Home = () => {
   const [loading, products] = useProducts('/products');
