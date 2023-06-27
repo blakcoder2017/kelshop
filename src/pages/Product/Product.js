@@ -34,7 +34,7 @@ const Product = (props) => {
               <img
                 className="card-img-top mb-5 mb-md-0"
                 src={product.image}
-                alt="..."
+                alt={product.title}
               />
             </div>
             <div className="col-md-6">
