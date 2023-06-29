@@ -6,7 +6,13 @@ import useProducts from "@hooks/useProducts";
 
 const Products = () => {
   const location = useLocation();
-  const [loading, products] = useProducts(`/products/category/${location.state}`);
+  const [loading, products] = useProducts(
+    `/products/category/${location.state}`
+  );
+
+  const addToCart = (event) => {
+    console.log("Products page", event.target);
+  };
 
   return (
     <div>

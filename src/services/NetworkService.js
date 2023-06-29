@@ -14,7 +14,11 @@ class NetworkService {
   }
 
   async post(path, data) {
-    throw Error("Unimplemented Error");
+    try {
+      return await axios.post(`${this.baseURL}${path}`, data);
+    } catch (e) {
+      throw Error(e.message);
+    }
   }
 
   async put(path, data) {
